@@ -12,11 +12,35 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+         //Role Table  Seeder
+         \App\Models\Role::factory()->create([
+            'name' => 'Admin',
+        ]);
+        \App\Models\Role::factory()->create([
+            'name' => 'Editor',
+        ]);
+        \App\Models\Role::factory()->create([
+            'name' => 'User',
+        ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        \App\Models\User::factory()->create([
+            'name' => 'admin',
+            'email' => 'admin@test.com',
+            'password' => '123',
+            'role_id' => 1
+        ]);
+        \App\Models\User::factory()->create([
+            'name' => 'editor',
+            'email' => 'editor@test.com',
+            'password' => '123',
+            'role_id' => 2
+        ]);
+        \App\Models\User::factory()->create([
+            'name' => 'user',
+            'email' => 'user@test.com',
+            'password' => '123',
+            'role_id' => 3
+        ]);
+        $this->call(TaskSeeder::class);
     }
 }
